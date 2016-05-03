@@ -7,16 +7,17 @@
 QT       += core gui
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets opengl
-
 TARGET = ES3D
 TEMPLATE = app
 
 
 SOURCES += main.cpp\
         MainWindow.cpp \
-    ESGLView.cpp
+    ESGLView.cpp \
+    ESProgram.cpp
 
 HEADERS  += MainWindow.h \
-    ESGLView.h
+    ESGLView.h \
+    ESProgram.h
 
 FORMS    += mainwindow.ui

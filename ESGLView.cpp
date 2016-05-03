@@ -12,11 +12,9 @@ ESGLView::ESGLView(QWidget* parent):QGLWidget(parent, 0, 0)
 
 void ESGLView::initializeGL()
 {
-//    QGLFormat glFormat;
-//    glFormat.setVersion(2, 0);
-//    glFormat.setProfile(QGLFormat::CoreProfile);
-//    this->setFormat(glFormat);
-
+    this->makeCurrent();
+    this->initializeOpenGLFunctions();
+    m_program.initWithShaderPath("Simple.vert", "Simple.frag");
 }
 
 void ESGLView::paintGL()
@@ -25,7 +23,7 @@ void ESGLView::paintGL()
     glClear(GL_COLOR_BUFFER_BIT);
 }
 
-void ESGLView::resizeGL( int width, int height )
+void ESGLView::resizeGL(int width, int height )
 {
 
 }

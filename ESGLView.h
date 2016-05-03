@@ -3,8 +3,12 @@
 
 #include <QGLWidget>
 #include <QWidget>
+#include <QWindow>
+#include <QOpenGLFunctions>
+#include <QOpenGLContext>
+#include "ESProgram.h"
 
-class ESGLView : public QGLWidget
+class ESGLView : public QGLWidget , protected QOpenGLFunctions
 {
 
 public:
@@ -20,6 +24,12 @@ protected:
   void paintGL();
 
   void resizeGL( int width, int height );
+
+protected:
+
+  QOpenGLContext* m_context;
+
+  ESProgram m_program;
 
 };
 
