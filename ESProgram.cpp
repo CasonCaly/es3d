@@ -118,12 +118,12 @@ ESProgram::ESProgram()
     if(compileResult == GL_FALSE)
     {
         GLsizei logLen = 0;
-        glGetShaderInfoLog(shaderHandle, 0, &logLen, NULL );
+        GLchar szMessage[1024];
+        glGetShaderInfoLog(shaderHandle, 1024, &logLen, szMessage );
         if(0 != logLen)
         {
-            GLchar* szLog = new GLchar[logLen + 1];
-            glGetShaderInfoLog(shaderHandle, logLen, NULL, szLog);
-            qDebug("%s", szLog);
+            szMessage[logLen]= 0;
+            qDebug("%s", szMessage);
         }
     }
     file.close();
