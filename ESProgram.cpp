@@ -37,11 +37,11 @@ ESProgram::ESProgram()
     if(GL_FALSE == linkSuccess)
     {
         GLsizei logLen = 0;
-        glGetProgramInfoLog(m_program, 0, &logLen, nullptr );
+        glGetProgramInfoLog(m_program, 0, &logLen, NULL );
         if(0 != logLen)
         {
             GLchar* szLog = new GLchar[logLen + 1];
-            glGetProgramInfoLog(m_program, logLen, nullptr, szLog);
+            glGetProgramInfoLog(m_program, logLen, NULL, szLog);
             qDebug("%s", szLog);
         }
         return false;
@@ -57,8 +57,8 @@ ESProgram::ESProgram()
 
  ESAttribute* ESProgram::getArribLocation(const QString& name)
  {
-     auto target =  m_mapAttribute.find(name);
-     ESAttribute* attribute = nullptr;
+     QMap<QString, ESAttribute*>::iterator target =  m_mapAttribute.find(name);
+     ESAttribute* attribute = NULL;
      if(target == m_mapAttribute.end())
      {
          std::string strName = name.toStdString();
@@ -77,8 +77,8 @@ ESProgram::ESProgram()
 
  ESUniform* ESProgram::getUniformLoaction(const QString& name)
  {
-     auto target =  m_mapUniform.find(name);
-     ESUniform* uniform = nullptr;
+     QMap<QString, ESUniform*>::iterator target =  m_mapUniform.find(name);
+     ESUniform* uniform = NULL;
      if(target == m_mapUniform.end())
      {
          std::string strName = name.toStdString();
@@ -109,7 +109,7 @@ ESProgram::ESProgram()
     const char* szText = strText.c_str();
 
     GLuint shaderHandle = glCreateShader(shaderType);
-    glShaderSource(shaderHandle, 1, &szText, nullptr);
+    glShaderSource(shaderHandle, 1, &szText, NULL);
     glCompileShader(shaderHandle);
 
     GLint compileResult = 0;
@@ -118,11 +118,11 @@ ESProgram::ESProgram()
     if(compileResult == GL_FALSE)
     {
         GLsizei logLen = 0;
-        glGetShaderInfoLog(shaderHandle, 0, &logLen, nullptr );
+        glGetShaderInfoLog(shaderHandle, 0, &logLen, NULL );
         if(0 != logLen)
         {
             GLchar* szLog = new GLchar[logLen + 1];
-            glGetShaderInfoLog(shaderHandle, logLen, nullptr, szLog);
+            glGetShaderInfoLog(shaderHandle, logLen, NULL, szLog);
             qDebug("%s", szLog);
         }
     }

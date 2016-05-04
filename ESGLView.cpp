@@ -1,5 +1,5 @@
 #include "ESGLView.h"
-
+#include <math.h>
 struct Vertex {
     float Position[2];
     float Color[4];
@@ -53,8 +53,8 @@ void ESGLView::applyOrtho(float maxX, float maxY)
 void ESGLView::applyRotation(float degrees)
 {
     float radians = degrees * 3.14159f / 180.0f;
-    float s = std::sin(radians);
-    float c = std::cos(radians);
+    float s = sin(radians);
+    float c = cos(radians);
     float zRotation[16] = {
         c, s, 0, 0,
        -s, c, 0, 0,
