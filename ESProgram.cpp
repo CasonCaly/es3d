@@ -55,6 +55,46 @@ ESProgram::ESProgram()
         glUseProgram(m_program);
  }
 
+ ESAttribute* ESProgram::getArribLocation(const QString& name)
+ {
+     auto target =  m_mapAttribute.find(name);
+     ESAttribute* attribute = nullptr;
+     if(target == m_mapAttribute.end())
+     {
+         std::string strName = name.toStdString();
+         GLuint loaction = glGetAttribLocation(m_program, strName.c_str());
+           attribute = new ESAttribute(loaction);
+           attribute->setParent(this);
+           attribute->initializeOpenGLFunctions();
+           m_mapAttribute.insert(name, attribute);
+     }
+     else
+     {
+         attribute = target.value();
+     }
+      return attribute;
+ }
+
+ ESUniform* ESProgram::getUniformLoaction(const QString& name)
+ {
+     auto target =  m_mapUniform.find(name);
+     ESUniform* uniform = nullptr;
+     if(target == m_mapUniform.end())
+     {
+         std::string strName = name.toStdString();
+         GLuint loaction = glGetUniformLocation(m_program, strName.c_str());
+           uniform = new ESUniform(loaction);
+           uniform->setParent(this);
+           uniform->initializeOpenGLFunctions();
+           m_mapUniform.insert(name, uniform);
+     }
+     else
+     {
+         uniform = target.value();
+     }
+      return uniform;
+ }
+
  GLuint ESProgram::buildShader(const QString& shaderPath, GLenum shaderType)
  {
     QFile file(shaderPath);

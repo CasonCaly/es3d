@@ -14,10 +14,16 @@ TEMPLATE = app
 SOURCES += main.cpp\
         MainWindow.cpp \
     ESGLView.cpp \
-    ESProgram.cpp
+    ESProgram.cpp \
+    ESBuffer.cpp \
+    ESUniform.cpp \
+    ESAttribute.cpp
 
 HEADERS  += MainWindow.h \
     ESGLView.h \
-    ESProgram.h
+    ESProgram.h \
+    ESBuffer.h \
+    ESUniform.h \
+    ESAttribute.h
 
 FORMS    += mainwindow.ui

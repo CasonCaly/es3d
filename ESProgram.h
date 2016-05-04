@@ -1,8 +1,11 @@
 #ifndef ESPROGRAM_H
 #define ESPROGRAM_H
 #include <QOpenGLFunctions>
+#include <QMap>
+#include "ESUniform.h"
+#include "ESAttribute.h"
 
-class ESProgram : protected QOpenGLFunctions
+class ESProgram : public QObject, protected QOpenGLFunctions
 {
 public:
 
@@ -11,6 +14,10 @@ public:
     bool initWithShaderPath(const QString& szVertexShaderPath, const QString& szFragmentShaderPath);
 
     void use();
+
+    ESAttribute* getArribLocation(const QString& name);
+
+    ESUniform* getUniformLoaction(const QString& name);
 
 protected:
 
@@ -23,6 +30,10 @@ protected:
     GLuint m_fragmentShader;
 
     GLuint m_program;
+
+    QMap<QString, ESUniform*> m_mapUniform;
+
+    QMap<QString, ESAttribute*> m_mapAttribute;
 };
 
 #endif // ESPROGRAM_H
