@@ -17,7 +17,7 @@ const Vertex Vertices[] = {
 
 ESGLView::ESGLView(QWidget* parent):QGLWidget(parent, 0, 0)
 {
-
+    m_currentAngle = 0.0f;
 }
 
  ESGLView::~ESGLView()
@@ -50,10 +50,29 @@ void ESGLView::applyOrtho(float maxX, float maxY)
     uniform->uniformMatrix4fv(1, 0, &ortho[0]);
 }
 
+void ESGLView::applyRotation(float degrees)
+{
+    float radians = degrees * 3.14159f / 180.0f;
+    float s = std::sin(radians);
+    float c = std::cos(radians);
+    float zRotation[16] = {
+        c, s, 0, 0,
+       -s, c, 0, 0,
+        0, 0, 1, 0,
+        0, 0, 0, 1
+    };
+
+    ESUniform* uniform = m_program.getUniformLoaction("Modelview");
+    uniform->uniformMatrix4fv(1, 0, &zRotation[0]);
+}
+
+
 void ESGLView::paintGL()
 {
     glClearColor(0.5f, 0.5f, 0.5f, 1);
     glClear(GL_COLOR_BUFFER_BIT);
+
+    applyRotation(m_currentAngle);
 
     ESAttribute* posAttri = m_program.getArribLocation("Position");
     ESAttribute* colorAttri = m_program.getArribLocation("SourceColor");

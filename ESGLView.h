@@ -28,15 +28,19 @@ protected:
 
   void applyOrtho(float maxX, float maxY);
 
+  void applyRotation(float degrees);
+
 protected:
 
   QOpenGLContext* m_context;
 
   ESProgram m_program;
 
-  ESBuffer m_renderBuffer;
+//  ESBuffer m_renderBuffer;
 
-  ESBuffer m_frameBuffer;
+//  ESBuffer m_frameBuffer;
+
+  float m_currentAngle;
 };
 
 #endif // ESGLVIEW_H
