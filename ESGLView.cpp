@@ -1,5 +1,7 @@
 #include "ESGLView.h"
 #include <math.h>
+#include <QGLFormat>
+
 struct Vertex {
     float Position[2];
     float Color[4];

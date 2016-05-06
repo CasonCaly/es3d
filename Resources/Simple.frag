@@ -1,4 +1,4 @@
-varying lowp vec4 DestinationColor;
+varying vec4 DestinationColor;
 
 void main(void)
 {
