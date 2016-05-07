@@ -13,17 +13,17 @@ TEMPLATE = app
 
 SOURCES += main.cpp\
         MainWindow.cpp \
-    ESGLView.cpp \
-    ESProgram.cpp \
-    ESBuffer.cpp \
-    ESUniform.cpp \
-    ESAttribute.cpp
+    core/ESAttribute.cpp \
+    core/ESBuffer.cpp \
+    core/ESGLView.cpp \
+    core/ESProgram.cpp \
+    core/ESUniform.cpp
 
 HEADERS  += MainWindow.h \
-    ESGLView.h \
-    ESProgram.h \
-    ESBuffer.h \
-    ESUniform.h \
-    ESAttribute.h
+    core/ESAttribute.h \
+    core/ESBuffer.h \
+    core/ESGLView.h \
+    core/ESProgram.h \
+    core/ESUniform.h
 
 FORMS    += mainwindow.ui
