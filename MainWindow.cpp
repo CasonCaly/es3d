@@ -1,6 +1,7 @@
 #include "MainWindow.h"
 #include "ui_mainwindow.h"
-#include "ESGLView.h"
+#include "core/ESGLView.h"
+#include "example/ESHelloArrow.h"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -8,7 +9,11 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
 
+    ESExample* example = new ESHelloArrow();
+
     ESGLView* glView = new ESGLView(this);
+    glView->setExample(example);
+
     glView->setGeometry(0, 0, 800, 600);
 }
 

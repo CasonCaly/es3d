@@ -17,13 +17,17 @@ SOURCES += main.cpp\
     core/ESBuffer.cpp \
     core/ESGLView.cpp \
     core/ESProgram.cpp \
-    core/ESUniform.cpp
+    core/ESUniform.cpp \
+    core/ESExample.cpp \
+    example/ESHelloArrow.cpp
 
 HEADERS  += MainWindow.h \
     core/ESAttribute.h \
     core/ESBuffer.h \
     core/ESGLView.h \
     core/ESProgram.h \
-    core/ESUniform.h
+    core/ESUniform.h \
+    core/ESExample.h \
+    example/ESHelloArrow.h
 
 FORMS    += mainwindow.ui

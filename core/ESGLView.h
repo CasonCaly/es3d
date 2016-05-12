@@ -8,6 +8,7 @@
 #include <QOpenGLContext>
 #include "ESProgram.h"
 #include "ESBuffer.h"
+#include "ESExample.h"
 
 class ESGLView : public QGLWidget , protected QOpenGLFunctions
 {
@@ -18,29 +19,25 @@ public:
 
     ~ESGLView();
 
-protected:
-
-  void initializeGL();
-
-  void paintGL();
-
-  void resizeGL( int width, int height );
-
-  void applyOrtho(float maxX, float maxY);
-
-  void applyRotation(float degrees);
+    void setExample(ESExample* example);
 
 protected:
 
-  QOpenGLContext* m_context;
+    void initializeGL();
 
-  ESProgram m_program;
+    void paintGL();
 
-//  ESBuffer m_renderBuffer;
+    void resizeGL( int width, int height );
 
-//  ESBuffer m_frameBuffer;
+    void applyOrtho(float maxX, float maxY);
 
-  float m_currentAngle;
+    void applyRotation(float degrees);
+
+protected:
+
+    QOpenGLContext* m_context;
+
+    ESExample* m_example;
 };
 
 #endif // ESGLVIEW_H
